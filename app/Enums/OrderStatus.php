@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Enums;
+
+enum OrderStatus :string
+{
+    case REQUESTED = 'REQUESTED';
+    case PENDING_COURIER = 'PENDING_COURIER';
+    case ASSIGNED = 'ASSIGNED';
+    case PICKUP_EN_ROUTE = 'PICKUP_EN_ROUTE';
+    case PICKED_UP = 'PICKED_UP';
+    case DELIVERY_EN_ROUTE = 'DELIVERY_EN_ROUTE';
+    case DELIVERED = 'DELIVERED';
+    case CANCELED_BY_CLIENT = 'CANCELED_BY_CLIENT';
+    case CANCELED_BY_SYSTEM = 'CANCELED_BY_SYSTEM';
+}
