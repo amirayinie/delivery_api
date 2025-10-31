@@ -7,14 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Organization extends Model
 {
-    /** @use HasFactory<\Database\Factories\OrganizationFactory> */
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'code',
+        'api_secret',
+        'webhook_url',
+        'webhook_secret',
+        'is_active',
+    ];
 
-    protected $casts = [];
+    protected $hidden =[
+        'api_secret',
+        'webhook_secret'
+    ];
 
-    protected $hidden = [];
+    protected function casts()
+    {
+        return [
+            'api_secret' => 'hashed',
+            'webhook_secret' => 'hashed'
+        ];
+    }
 
     public function orders()
     {
