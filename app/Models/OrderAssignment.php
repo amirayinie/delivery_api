@@ -7,8 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderAssignment extends Model
 {
-    /** @use HasFactory<\Database\Factories\OrderAssignmentFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'order_id',
+        'courier_id',
+        'state',
+        'meta',
+    ];
+
+    protected function casts()
+    {
+        return [
+            'meta' => 'array'
+        ];
+    }
 
     public function order()
     {

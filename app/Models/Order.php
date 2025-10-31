@@ -7,9 +7,38 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    /** @use HasFactory<\Database\Factories\OrderFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'code',
+        'organization_id',
+        'assigned_courier_id',
+        'pickup_lat',
+        'pickup_lng',
+        'pickup_address',
+        'sender_name',
+        'sender_mobile',
+        'destination_lat',
+        'destination_lng',
+        'destination_address',
+        'receiver_name',
+        'receiver_mobile',
+        'status',
+        'requested_at',
+        'picked_up_at',
+        'delivered_at',
+        'canceled_at',
+    ];
+
+    protected function casts()
+    {
+        return [
+        'requested_at'=> 'datetime',
+        'picked_up_at'=> 'datetime',
+        'delivered_at'=> 'datetime',
+        'canceled_at' => 'datetime',
+        ];
+    }
     public function organization()
     {
         return $this->belongsTo(Organization::class);

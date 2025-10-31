@@ -3,6 +3,9 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Nette\Utils\Random;
+
+use function App\Utilities\generateMobileNumber;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Courier>
@@ -17,7 +20,10 @@ class CourierFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'mobile' => generateMobileNumber(),
+            'password' => fake()->password(),
+            'is_active' => fake()->boolean(80)
         ];
     }
 }

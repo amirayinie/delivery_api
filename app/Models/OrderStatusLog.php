@@ -7,8 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderStatusLog extends Model
 {
-    /** @use HasFactory<\Database\Factories\OrderStatusLogFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'order_id',
+        'from_status',
+        'to_status',
+        'actor',
+        'actor_id',
+        'meta',
+        'changed_at'
+    ];
+
+    protected function casts()
+    {
+        return [
+            'meta' => 'array',
+            'changed_at' => 'datetime'
+        ];
+    }
 
     public function order()
     {
